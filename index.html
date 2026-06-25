@@ -27,14 +27,14 @@
   for (let i = 1; i < music.length; i++) {
     let done = false;
     while (done == false) {
-      let number = Math.ceil(Math.random() * music.length) - 1;
+      let number = Math.ceil(Math.random() * (music.length - 1)) - 1;
       if (order[number] == null) {
         order[number] = i;
         done = true;
       }
     }
   }
-  document.getElementById("ex").innerHTML = order;
+  document.getElementById("ex").innerHTML = order + "  now";
   var nowNumber = 0;
   var nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
 
