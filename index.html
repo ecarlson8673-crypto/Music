@@ -9,7 +9,13 @@
   }
   #start {
     position: fixed;
-    left: calc(50% - 25px);
+    left: calc(50% - 55px);
+    bottom: 10px;
+    font-size: 20px;
+  }
+  #pause {
+    position: fixed;
+    left: 50%;
     bottom: 10px;
     font-size: 20px;
   }
@@ -28,9 +34,10 @@
 <body>
   <div id="footer"></div>
   <button id="start" onclick="start()">Play</button>
+  <button id="pause" onclick="pause()">Pause</button>
   <div id="container"></div>
   <div id="ex"></div>
-  <div><br><br><br><br><br><br> </div>
+  <div><br><br><br><br> </div>
 </body>
 <script>
   var music = [];
@@ -82,6 +89,10 @@
 
   function start() {
     nowPlaying.play();
+  }
+
+  function pause() {
+    nowPlaying.pause();
   }
 
   nowPlaying.addEventListener("ended", playNextSong);
