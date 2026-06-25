@@ -14,6 +14,14 @@
   <div id="container"></div>
 </body>
 <script>
+  var music = [];
+  music[1] = "Poisoning_Pigeons_in_the_Park-Tom_Lehrer";
+  music[2] = "Pollution-Tom_Lehrer";
+  music[3] = "So_Long_Ma_a_song_for_World_War_3-Tom_Lehrer";
+  music[4] = "Thats_Mathematics-Tom_Lehrer";
+  music[5] = "The_Elements-Tom_Lehrer";
+  music[6] = "We_Will_All_Go_Together_When_We_Go-Tom_Lehrer";
+  music[7] = "Wernher_von_Braun-Tom_Lehrer";
   var order = [];
   for (let i = 0; i < music.length; i++) {
     let done = false;
@@ -25,14 +33,6 @@
       }
     }
   }
-  var music = [];
-  music[1] = "Poisoning_Pigeons_in_the_Park-Tom_Lehrer";
-  music[2] = "Pollution-Tom_Lehrer";
-  music[3] = "So_Long_Ma_a_song_for_World_War_3-Tom_Lehrer";
-  music[4] = "Thats_Mathematics-Tom_Lehrer";
-  music[5] = "The_Elements-Tom_Lehrer";
-  music[6] = "We_Will_All_Go_Together_When_We_Go-Tom_Lehrer";
-  music[7] = "Wernher_von_Braun-Tom_Lehrer";
   var nowPlaying = new Audio(music[order[0]] + ".mp3");
   var nowNumber = 0;
 
