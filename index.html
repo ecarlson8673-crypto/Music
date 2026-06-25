@@ -5,12 +5,17 @@
   button {
     font-size: 15px;
   }
+  .start {
+    position: absolute;
+    left: calc(50% - 40px);
+    bottom: 30px;
+  }
   body {
     background-color: rgb(220, 220, 220);
   }
 </style>
 <body>
-  <button onclick="start()">Play</button>
+  <button id="start" onclick="start()">Play</button>
   <div id="container"></div>
   <div id="ex"></div>
 </body>
@@ -58,6 +63,7 @@
     const button = document.createElement("button");
     const text = music[i].replaceAll("_", " ");
     button.innerHTML = text;
+    button.id = i;
     document.getElementById("container").appendChild(button);
   }
 </script>
