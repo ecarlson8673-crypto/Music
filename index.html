@@ -27,7 +27,7 @@
   for (let i = 1; i < music.length; i++) {
     let done = false;
     while (done == false) {
-      let number = Math.floor(Math.random() * music.length);
+      let number = Math.floor(Math.random() * music.length - 1);
       if (order[number] == null) {
         order[number] = i;
         done = true;
