@@ -23,7 +23,7 @@
   music[6] = "We_Will_All_Go_Together_When_We_Go-Tom_Lehrer";
   music[7] = "Wernher_von_Braun-Tom_Lehrer";
   var order = [];
-  for (let i = 0; i < music.length; i++) {
+  /*for (let i = 0; i < music.length; i++) {
     let done = false;
     while (done == false) {
       let number = Math.floor(Math.random() * music.length + 1);
@@ -32,9 +32,9 @@
         done = true;
       }
     }
-  }
-  var nowPlaying = new Audio(music[order[0]] + ".mp3");
-  var nowNumber = 0;
+  }*/
+  var nowPlaying = new Audio(music[1] + ".mp3");
+  var nowNumber = 1;
 
   function start() {
     nowPlaying.play();
@@ -43,7 +43,7 @@
   nowPlaying.addEventListener("ended", playNextSong);
   function playNextSong() {
     nowNumber++;
-    nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
+    nowPlaying = new Audio(music[nowNumber] + ".mp3");
     nowPlaying.play();
   }
 
