@@ -14,6 +14,17 @@
   <div id="container"></div>
 </body>
 <script>
+  var order = [];
+  for (let i = 0; i < music.length; i++) {
+    let done = false;
+    while (done == false) {
+      let number = Math.floor(Math.random() * music.length + 1);
+      if (order[number] == null) {
+        order[number] = i;
+        done = true;
+      }
+    }
+  }
   var music = [];
   music[1] = "Poisoning_Pigeons_in_the_Park-Tom_Lehrer";
   music[2] = "Pollution-Tom_Lehrer";
@@ -22,8 +33,8 @@
   music[5] = "The_Elements-Tom_Lehrer";
   music[6] = "We_Will_All_Go_Together_When_We_Go-Tom_Lehrer";
   music[7] = "Wernher_von_Braun-Tom_Lehrer";
-  var nowPlaying = new Audio(music[1] + ".mp3");
-  var nowNumber = 1;
+  var nowPlaying = new Audio(music[order[0]] + ".mp3");
+  var nowNumber = 0;
 
   function start() {
     nowPlaying.play();
@@ -32,7 +43,7 @@
   nowPlaying.addEventListener("ended", playNextSong);
   function playNextSong() {
     nowNumber++;
-    nowPlaying = new Audio(music[nowNumber] + ".mp3");
+    nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
     nowPlaying.play();
   }
 
