@@ -24,10 +24,10 @@
   music[6] = "We_Will_All_Go_Together_When_We_Go-Tom_Lehrer";
   music[7] = "Wernher_von_Braun-Tom_Lehrer";
   var order = [];
-  for (let i = 1; i < music.length + 1; i++) {
+  for (let i = 1; i < music.length; i++) {
     let done = false;
     while (done == false) {
-      let number = Math.floor(Math.random() * music.length + 1);
+      let number = Math.floor(Math.random() * music.length);
       if (order[number] == null) {
         order[number] = i;
         done = true;
@@ -35,8 +35,8 @@
     }
   }
   document.getElementById("ex").innerHTML = order;
-  var nowPlaying = new Audio(music[order[1]] + ".mp3");
-  var nowNumber = 1;
+  var nowNumber = 0;
+  var nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
 
   function start() {
     nowPlaying.play();
