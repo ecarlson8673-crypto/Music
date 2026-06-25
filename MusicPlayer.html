@@ -1,0 +1,52 @@
+<meta name="viewport" content="device=device-width, initial-scale=1.0">
+<html>
+<style>
+  button {
+    font-size: 15px;
+  }
+  body {
+    background-color: rgb(220, 220, 220);
+  }
+</style>
+<body>
+  <button onclick="start()">Play</button>
+  <div id="container"></div>
+  <audio controls>
+      <source src="Poisoning_Pigeons_in_the_Park-Tom_Lehrer.mp3" type="audio/mpeg">
+  </audio>
+</body>
+<script>
+  var music = [];
+  music[1] = "Poisoning_Pigeons_in_the_Park-Tom_Lehrer";
+  music[2] = "Pollution-Tom_Lehrer";
+  music[3] = "So_Long_Ma_a_song_for_World_War_3-Tom_Lehrer";
+  music[4] = "Thats_Mathematics-Tom_Lehrer";
+  music[5] = "The_Elements-Tom_Lehrer";
+  music[6] = "We_Will_All_Go_Together_When_We_Go-Tom_Lehrer";
+  music[7] = "Wernher_von_Braun-Tom_Lehrer";
+  var nowPlaying = new Audio("music/" + music[1] + ".mp3");
+  var nowNumber = 1;
+
+  function start() {
+    nowPlaying.play();
+  }
+
+  nowPlaying.addEventListener("ended", playNextSong);
+  function playNextSong() {
+    nowNumber++;
+    nowPlaying = new Audio("music/" + music[nowNumber] + ".mp3");
+    nowPlaying.play();
+  }
+
+  //music buttons
+  for (let i = 0; i < music.length; i++) {
+    if (music[i] == null) {
+      continue;
+    }
+    const button = document.createElement("button");
+    const text = music[i].replaceAll("_", " ");
+    button.innerHTML = text;
+    document.getElementById("container").appendChild(button);
+  }
+</script>
+</html>
