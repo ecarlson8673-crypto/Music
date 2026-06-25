@@ -24,7 +24,7 @@
   music[6] = "We_Will_All_Go_Together_When_We_Go-Tom_Lehrer";
   music[7] = "Wernher_von_Braun-Tom_Lehrer";
   var order = [];
-  for (let i = 1; i < music.length; i++) {
+  for (let i = 1; i < music.length - 1; i++) {
     let done = false;
     while (done == false) {
       let number = Math.floor(Math.random() * music.length + 1);
@@ -34,6 +34,7 @@
       }
     }
   }
+  document.getElementById("ex").innerHTML = order;
   var nowPlaying = new Audio(music[order[1]] + ".mp3");
   var nowNumber = 1;
 
