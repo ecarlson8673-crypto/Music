@@ -12,6 +12,7 @@
 <body>
   <button onclick="start()">Play</button>
   <div id="container"></div>
+  <div id="ex"></div>
 </body>
 <script>
   var music = [];
@@ -33,6 +34,7 @@
       }
     }
   }
+  document.getElementById("ex").innerHTML = order;
   var nowPlaying = new Audio(music[1] + ".mp3");
   var nowNumber = 1;
 
