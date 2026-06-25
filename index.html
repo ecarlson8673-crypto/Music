@@ -34,7 +34,7 @@
       }
     }
   }
-  document.getElementById("ex").innerHTML = order + "  now";
+  document.getElementById("ex").innerHTML = order;
   var nowNumber = 0;
   var nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
 
@@ -47,6 +47,7 @@
     nowNumber++;
     nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
     nowPlaying.play();
+    nowPlaying.addEventListener("ended", playNextSong);
   }
 
   //music buttons
