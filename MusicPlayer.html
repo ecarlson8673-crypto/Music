@@ -24,7 +24,7 @@
   music[5] = "The_Elements-Tom_Lehrer";
   music[6] = "We_Will_All_Go_Together_When_We_Go-Tom_Lehrer";
   music[7] = "Wernher_von_Braun-Tom_Lehrer";
-  var nowPlaying = new Audio("music/" + music[1] + ".mp3");
+  var nowPlaying = new Audio(music[1] + ".mp3");
   var nowNumber = 1;
 
   function start() {
@@ -34,7 +34,7 @@
   nowPlaying.addEventListener("ended", playNextSong);
   function playNextSong() {
     nowNumber++;
-    nowPlaying = new Audio("music/" + music[nowNumber] + ".mp3");
+    nowPlaying = new Audio(music[nowNumber] + ".mp3");
     nowPlaying.play();
   }
 
