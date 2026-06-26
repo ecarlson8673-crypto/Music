@@ -84,7 +84,7 @@
     nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
     nowPlaying.play();
     nowPlaying.addEventListener("ended", playNextSong);
-    document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
+    document.getElementById("currentSong").innerHTML = music[order[nowNumber]];
   }
 
   //music buttons
