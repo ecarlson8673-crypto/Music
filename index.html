@@ -114,12 +114,12 @@
     const text = music[i].replaceAll("_", " ");
     button.innerHTML = text;
     button.id = i;
-    button.addEventListener("click", songClicked(i));
+    button.addEventListener("click", songClicked("the"));
     document.getElementById("container").appendChild(button);
   }
 
   function songClicked(i) {
-    document.getElementById("ex").innerHTML = `${i}`;
+    document.getElementById("ex").innerHTML = i;
   }
 </script>
 </html>
