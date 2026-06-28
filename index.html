@@ -114,11 +114,8 @@
     const text = music[i].replaceAll("_", " ");
     button.innerHTML = text;
     button.id = i;
+    button.onclick = search(i);
     document.getElementById("container").appendChild(button);
-  }
-
-  for (let i = 1; i < music.length; i++) {
-    document.getElementById(i).addEventListener("click", songClicked(i));
   }
 
   function songClicked(i) {
