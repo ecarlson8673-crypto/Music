@@ -94,10 +94,10 @@
   }
 
   function search() {
-    const search = document.getElementById("search").value;
+    const search = document.getElementById("search").value.toLowerCase();
     for (let i = 1; i < music.length; i++) {
-      const words = music[i].replaceAll("_", " ");
-      if (words.search(/${search}/i) == -1) {
+      const words = music[i].replaceAll("_", " ").toLowerCase();
+      if (words.includes(search) == true) {
         document.getElementById(i).style.display = "none";
       } else {
         document.getElementById(i).style.display = "";
