@@ -121,7 +121,8 @@
     document.getElementById(i).addEventListener("click", songClicked(i));
   }
 
-  function songClicked() {
+  function songClicked(i) {
+    document.getElementById("ex").innerHTML = `${i}`;
   }
 </script>
 </html>
