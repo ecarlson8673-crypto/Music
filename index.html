@@ -97,7 +97,7 @@
     const search = document.getElementById("search").value.toLowerCase();
     for (let i = 1; i < music.length; i++) {
       const words = music[i].replaceAll("_", " ").toLowerCase();
-      if (words.includes(search) == true) {
+      if (words.includes(search) == false) {
         document.getElementById(i).style.display = "none";
       } else {
         document.getElementById(i).style.display = "";
