@@ -72,6 +72,7 @@
 
   function start() {
     nowPlaying.play();
+    document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
   }
 
   function pause() {
@@ -84,7 +85,7 @@
     nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
     nowPlaying.play();
     nowPlaying.addEventListener("ended", playNextSong);
-    document.getElementById("currentSong").innerHTML = "hello";
+    document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
   }
 
   //music buttons
