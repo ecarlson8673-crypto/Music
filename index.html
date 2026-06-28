@@ -94,7 +94,14 @@
   }
 
   function search() {
-    document.getElementById("ex").innerHTML = document.getElementById("search").value;
+    const search = document.getElementById("search").value;
+    for (let i = 1; i < music.length; i++) {
+      if (music[i].search(search) = -1) {
+        document.getElementById(i).style.display = "none";
+      } else {
+        document.getElementById(i).style.display = "contents";
+      }
+    }
   }
 
   //music buttons
