@@ -116,5 +116,12 @@
     button.id = i;
     document.getElementById("container").appendChild(button);
   }
+
+  for (let i = 1; i < music.length; i++) {
+    document.getElementById(i).addEventListener("click", songClicked(i));
+  }
+
+  function songClicked() {
+  }
 </script>
 </html>
