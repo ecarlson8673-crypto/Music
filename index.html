@@ -44,7 +44,7 @@
   <div id="footer"></div>
   <button id="start" onclick="start()">Play</button>
   <button id="pause" onclick="pause()">Pause</button>
-  <div id="currentSong">djsown</div>
+  <div id="currentSong"></div>
   <input id="search" type="question">
   <input onclick="search()" type=submit>
   <div id="container"></div>
@@ -99,7 +99,7 @@
       if (music[i].search(search) == -1) {
         document.getElementById(i).style.display = "none";
       } else {
-        document.getElementById(i).style.display = "contents";
+        document.getElementById(i).style.display = "";
       }
     }
   }
