@@ -96,7 +96,8 @@
   function search() {
     const search = document.getElementById("search").value;
     for (let i = 1; i < music.length; i++) {
-      if (music[i].search(search) == -1) {
+      const words = music[i].replaceAll("_", " ");
+      if (words.search(/${search}/i) == -1) {
         document.getElementById(i).style.display = "none";
       } else {
         document.getElementById(i).style.display = "";
