@@ -114,7 +114,7 @@
     const text = music[i].replaceAll("_", " ");
     button.innerHTML = text;
     button.id = i;
-    button.addEventListener("click", songClicked("the"));
+    button.addEventListener("click", songClicked(music[i]));
     document.getElementById("container").appendChild(button);
   }
 
