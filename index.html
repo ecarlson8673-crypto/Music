@@ -25,6 +25,12 @@
     bottom: 50px;
     font-size: 20px;
   }
+  #random {
+    position: fixed;
+    left: 25%;
+    bottom: 50px;
+    font-size: 20px;
+  }
   #currentSong {
     position: fixed;
     bottom: 10px;
@@ -50,6 +56,7 @@
   <div id="footer"></div>
   <button id="start" onclick="start()">Play</button>
   <button id="pause" onclick="pause()">Pause</button>
+  <button id="random" onclick="random()">《==</button>
   <div id="currentSong"></div>
   <input id="search" type="question">
   <input onclick="search()" type=submit>
@@ -107,6 +114,10 @@
     }
     nowPlaying.play();
     nowPlaying.addEventListener("ended", playNextSong);
+  }
+
+  function random() {
+    humanOrder = [];
   }
 
   function search() {
