@@ -71,7 +71,7 @@
       }
     }
   }
-  //document.getElementById("ex").innerHTML = order;
+  var humanOrder = [];
   var nowNumber = 0;
   var nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
 
@@ -119,7 +119,8 @@
   }
 
   function songClicked(i) {
-    document.getElementById("ex").innerHTML = i.currentTarget.id;
+    humanOrder[humanOrder.length] = i.currentTarget.id;
+    document.getElementById("ex").innerHTML = humanOrder;
   }
 </script>
 </html>
