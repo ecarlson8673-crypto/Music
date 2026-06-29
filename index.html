@@ -78,9 +78,11 @@
   function start() {
     if (humanOrder.length > 0) {
       nowPlaying = new Audio(music[humanOrder[nowNumber]] + ".mp3");
+      document.getElementById("currentSong").innerHTML = music[humanOrder[nowNumber]].replaceAll("_", " ");
+    } else {
+      document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
     }
     nowPlaying.play();
-    document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
   }
 
   function pause() {
@@ -92,12 +94,13 @@
     nowNumber++;
     if (humanOrder.length > 0) {
       nowPlaying = new Audio(music[humanOrder[nowNumber]] + ".mp3");
+      document.getElementById("currentSong").innerHTML = music[humanOrder[nowNumber]].replaceAll("_", " ");
     } else {
       nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
+      document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
     }
     nowPlaying.play();
     nowPlaying.addEventListener("ended", playNextSong);
-    document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
   }
 
   function search() {
