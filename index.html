@@ -89,13 +89,13 @@
       document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
     }
     nowPlaying.play();
+    nowPlaying.addEventListener("ended", playNextSong);
   }
 
   function pause() {
     nowPlaying.pause();
   }
-
-  nowPlaying.addEventListener("ended", playNextSong);
+  
   function playNextSong() {
     nowNumber++;
     if (humanOrder.length > 0) {
