@@ -76,6 +76,9 @@
   var nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
 
   function start() {
+    if (humanOrder.length > 0) {
+      nowPlaying = new Audio(music[humanOrder[nowNumber]] + ".mp3");
+    }
     nowPlaying.play();
     document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
   }
@@ -87,7 +90,11 @@
   nowPlaying.addEventListener("ended", playNextSong);
   function playNextSong() {
     nowNumber++;
-    nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
+    if (humanOrder.length > 0) {
+      nowPlaying = new Audio(music[humanOrder[nowNumber]] + ".mp3");
+    } else {
+      nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
+    }
     nowPlaying.play();
     nowPlaying.addEventListener("ended", playNextSong);
     document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
