@@ -38,7 +38,15 @@
     text-align: center;
   }
   #search {
-    margin-bottom: 3px;
+    margin-bottom: 6px;
+  }
+  #header {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 20px;
+    background-color: rgb(180, 180, 180);
   }
   #footer {
     position: fixed;
@@ -58,6 +66,7 @@
   <button id="pause" onclick="pause()">Pause</button>
   <button id="random" onclick="random()"><---</button>
   <div id="currentSong"></div>
+  <div id="header"></div>
   <input id="search" type="question">
   <input onclick="search()" type=submit>
   <div id="container"></div>
