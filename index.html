@@ -13,6 +13,12 @@
   #search:active {
     background-color: rgb(150, 150, 150);
   }
+  #previous {
+    position: fixed;
+    left: calc(50% - 85px);
+    bottom: 50px;
+    font-size: 20px;
+  }
   #start {
     position: fixed;
     left: calc(50% - 65px);
@@ -22,6 +28,12 @@
   #pause {
     position: fixed;
     left: calc(50% - 10px);
+    bottom: 50px;
+    font-size: 20px;
+  }
+  #next {
+    position: fixed;
+    left: calc(50% + 30px);
     bottom: 50px;
     font-size: 20px;
   }
@@ -63,8 +75,10 @@
 </style>
 <body>
   <div id="footer"></div>
+  <button id="previous" onclick="previous()"><</button>
   <button id="start" onclick="start()">Play</button>
   <button id="pause" onclick="pause()">Pause</button>
+  <button id="next" onclick="next()">></button>
   <button id="random" onclick="random()"><--></button>
   <div id="currentSong"></div>
   <div id="header"></div>
@@ -162,6 +176,12 @@
   var nowNumber = 0;
   var nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
 
+  function previous() {
+    if (nowNumber > 0) {
+      nowNumber--;
+    }
+  }
+  
   function start() {
     if (humanOrder.length > 0) {
       nowPlaying = new Audio(music[humanOrder[nowNumber]] + ".mp3");
@@ -175,6 +195,10 @@
 
   function pause() {
     nowPlaying.pause();
+  }
+
+  function next() {
+    nowNumber++;
   }
   
   function playNextSong() {
