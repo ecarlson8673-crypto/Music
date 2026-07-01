@@ -15,7 +15,7 @@
   }
   #previous {
     position: fixed;
-    left: calc(50% - 85px);
+    left: calc(50% - 90px);
     bottom: 50px;
     font-size: 20px;
   }
@@ -33,7 +33,7 @@
   }
   #next {
     position: fixed;
-    left: calc(50% + 30px);
+    left: calc(50% + 60px);
     bottom: 50px;
     font-size: 20px;
   }
@@ -178,7 +178,8 @@
 
   function previous() {
     if (nowNumber > 0) {
-      nowNumber--;
+      nowNumber = nowNumber - 2;
+      playNextSong();
     }
   }
   
@@ -198,7 +199,9 @@
   }
 
   function next() {
-    nowNumber++;
+    nowNumber = nowNumber + 2;
+    playNextSong();
+    
   }
   
   function playNextSong() {
