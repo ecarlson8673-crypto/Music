@@ -288,11 +288,10 @@
 
   function songClicked(i) {
     humanOrder[humanOrder.length] = i.currentTarget.id;
-    document.getElementById("ex").innerHTML = humanOrder;
   }
 
   function musicVariable() {
-    //alphabetize
+    //alphabetize music by artist
     var musicWorking = [];
     musicWorking[1] = music[1];
     for (let i = 2; i < music.length; i++) {
