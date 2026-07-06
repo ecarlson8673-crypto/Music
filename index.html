@@ -349,8 +349,8 @@
         title: music[nowNumber].slice(0, Number(music[nowNumber].search("-"))),
         artist: music[nowNumber].slice(Number(music[nowNumber].search("-")) + 1)
       });
-      navigator.mediaSession.setActionHandler("play", () => audioPlayer.play());
-      navigator.mediaSession.setActionHandler("pause", () => audioPlayer.pause());
+      //navigator.mediaSession.setActionHandler("play", () => audioPlayer.play());
+      //navigator.mediaSession.setActionHandler("pause", () => audioPlayer.pause());
     }
     nowPlaying.play();
     nowPlaying.addEventListener("ended", playNextSong);
