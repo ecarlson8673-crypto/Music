@@ -312,6 +312,7 @@
   function previous() {
     if (nowNumber > 0) {
       nowNumber = nowNumber - 2;
+      nowPlaying.stop();
       playNextSong();
     }
   }
@@ -332,6 +333,7 @@
   }
 
   function next() {
+    nowPlaying.stop();
     playNextSong();
   }
   
