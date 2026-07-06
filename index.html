@@ -360,14 +360,14 @@
   function playNextSong() {
     nowNumber++;
     if (humanOrder.length > 0) {
-      nowPlaying = new Audio(music[humanOrder[nowNumber]] + ".mp3");
+      nowPlaying.src = music[humanOrder[nowNumber]] + ".mp3";
       document.getElementById("currentSong").innerHTML = music[humanOrder[nowNumber]].replaceAll("_", " ");
     } else {
-      nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
+      nowPlaying.src = music[order[nowNumber]] + ".mp3";
       document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
     }
     nowPlaying.play();
-    nowPlaying.addEventListener("ended", playNextSong);
+    //nowPlaying.addEventListener("ended", playNextSong);
   }
 
   function random() {
