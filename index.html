@@ -342,9 +342,9 @@
     if (playing == false) {
       playNextSong();
       playing = true;
+      nowPlaying.addEventListener("ended", playNextSong);
     } else {
       nowPlaying.play();
-      nowPlaying.addEventListener("ended", playNextSong);
     }
   }
 
