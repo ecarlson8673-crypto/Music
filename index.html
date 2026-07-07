@@ -327,7 +327,8 @@
   }
   var humanOrder = [];
   var nowNumber = 0;
-  var nowPlaying = new Audio(music[order[nowNumber]] + ".mp3");
+  var nowPlaying = new Audio();
+  var playing = false;
 
   function previous() {
     if (nowNumber > 0) {
@@ -338,22 +339,12 @@
   }
   
   function start() {
-    if (humanOrder.length > 0) {
-      nowPlaying = new Audio(music[humanOrder[nowNumber]] + ".mp3");
-      document.getElementById("currentSong").innerHTML = music[humanOrder[nowNumber]].replaceAll("_", " ");
+    if (playing == false) {
+      playNextSong();
     } else {
-      document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
+      nowPlaying.play();
+      nowPlaying.addEventListener("ended", playNextSong);
     }
-    if ("mediaSession" in navigator) {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))),
-        artist: music[order[nowNumber]].slice(Number(music[order[nowNumber]].search("-")) + 1)
-      });
-      navigator.mediaSession.setActionHandler("play", () => nowPlaying.play());
-      navigator.mediaSession.setActionHandler("pause", () => nowPlaying.pause());
-    }
-    nowPlaying.play();
-    nowPlaying.addEventListener("ended", playNextSong);
   }
 
   function pause() {
