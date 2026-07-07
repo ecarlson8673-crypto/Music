@@ -344,7 +344,7 @@
     } else {
       document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
     }
-    if ("mediaSession" in navigator) {
+    /*if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: "cool tital",//music[nowNumber].slice(0, Number(music[nowNumber].search("-"))),
         artist: "name",//music[nowNumber].slice(Number(music[nowNumber].search("-")) + 1),
@@ -352,7 +352,7 @@
       });
       //navigator.mediaSession.setActionHandler("play", () => audioPlayer.play());
       //navigator.mediaSession.setActionHandler("pause", () => audioPlayer.pause());
-    }
+    }*/
     nowPlaying.play();
     nowPlaying.addEventListener("ended", playNextSong);
   }
