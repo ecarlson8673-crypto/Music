@@ -377,8 +377,8 @@
     }
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: music[nowNumber].slice,
-        artist: music[nowNumber].slice(Number(music[nowNumber].search("-")) + 1);
+        title: music[nowNumber].slice(0, Number(music[nowNumber].search("-"))),
+        artist: music[nowNumber].slice(Number(music[nowNumber].search("-")) + 1)
       });
     }
     nowPlaying.play();
