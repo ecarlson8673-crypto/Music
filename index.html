@@ -349,8 +349,8 @@
         title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))),
         artist: music[order[nowNumber]].slice(Number(music[order[nowNumber]].search("-")) + 1)
       });
-      //navigator.mediaSession.setActionHandler("play", () => audioPlayer.play());
-      //navigator.mediaSession.setActionHandler("pause", () => audioPlayer.pause());
+      navigator.mediaSession.setActionHandler("play", () => nowPlaying.play());
+      navigator.mediaSession.setActionHandler("pause", () => nowPlaying.pause());
     }
     nowPlaying.play();
     nowPlaying.addEventListener("ended", playNextSong);
@@ -379,6 +379,8 @@
         title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))),
         artist: music[order[nowNumber]].slice(Number(music[order[nowNumber]].search("-")) + 1)
       });
+      navigator.mediaSession.setActionHandler("play", () => nowPlaying.play());
+      navigator.mediaSession.setActionHandler("pause", () => nowPlaying.pause());
     }
     nowPlaying.play();
     //nowPlaying.addEventListener("ended", playNextSong);
