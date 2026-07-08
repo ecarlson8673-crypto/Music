@@ -325,10 +325,11 @@
       }
     }
   }
-  var humanOrder = [];
   var nowNumber = 0;
   var nowPlaying = new Audio();
   var playing = false;
+  // random (true) or human picked (false)
+  var which = true;
 
   function previous() {
     if (nowNumber > 0) {
@@ -359,13 +360,8 @@
   
   function playNextSong() {
     nowNumber++;
-    if (humanOrder.length > 0) {
-      nowPlaying.src = music[humanOrder[nowNumber]] + ".mp3";
-      document.getElementById("currentSong").innerHTML = music[humanOrder[nowNumber]].replaceAll("_", " ");
-    } else {
-      nowPlaying.src = music[order[nowNumber]] + ".mp3";
-      document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
-    }
+    nowPlaying.src = music[order[nowNumber]] + ".mp3";
+    document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))).replaceAll("_", " "),
@@ -379,7 +375,7 @@
   }
 
   function random() {
-    humanOrder = [];
+    //need to re randimize order
     nowNumber = 0;
   }
 
@@ -409,7 +405,11 @@
   }
 
   function songClicked(i) {
-    humanOrder[humanOrder.length + 1] = i.currentTarget.id;
+    if (which == true) {
+      which = false;
+      order = [];
+    }
+    order[order.length + 1] = i.currentTarget.id;
   }
 
   function musicVariable() {
