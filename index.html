@@ -368,8 +368,8 @@
     }
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))),
-        artist: music[order[nowNumber]].slice(Number(music[order[nowNumber]].search("-")) + 1)
+        title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))).replaceAll("_", " "),
+        artist: music[order[nowNumber]].slice(Number(music[order[nowNumber]].search("-")) + 1).replaceAll("_", " ")
       });
       navigator.mediaSession.setActionHandler("play", () => nowPlaying.play());
       navigator.mediaSession.setActionHandler("pause", () => nowPlaying.pause());
@@ -409,7 +409,7 @@
   }
 
   function songClicked(i) {
-    humanOrder[humanOrder.length] = i.currentTarget.id;
+    humanOrder[humanOrder.length + 1] = i.currentTarget.id;
   }
 
   function musicVariable() {
