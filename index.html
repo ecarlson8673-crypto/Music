@@ -327,6 +327,7 @@
   }
   var nowNumber = 0;
   var nowPlaying = new Audio();
+  nowPlaying.addEventListener("ended", playNextSong);
   var playing = false;
   // random (true) or human picked (false)
   var which = true;
@@ -343,7 +344,6 @@
     if (playing == false) {
       playNextSong();
       playing = true;
-      nowPlaying.addEventListener("ended", playNextSong);
     } else {
       nowPlaying.play();
     }
