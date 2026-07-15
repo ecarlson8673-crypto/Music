@@ -418,6 +418,20 @@
     //nowPlaying.addEventListener("ended", playNextSong);
   }
 
+  function updateTimeline() {
+    if ('setPositionState' in navigator.mediaSession) {
+      navigator.mediaSession.setPositionState({
+        duration: audioElement.duration,      // Total track duration in seconds
+        playbackRate: audioElement.playbackRate,  // Speed (usually 1.0)
+        position: audioElement.currentTime     // Current track playback time
+      });
+    }
+  }
+
+  audioElement.addEventListener('loadedmetadata', updateTimeline);
+  audioElement.addEventListener('seeked', updateTimeline);
+
+
   function random() {
     //need to re randimize order
     nowNumber = 0;
