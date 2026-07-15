@@ -405,6 +405,7 @@
     nowNumber++;
     nowPlaying.src = music[order[nowNumber]] + ".mp3";
     document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
+    nowPlaying.play();
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))).replaceAll("_", " "),
@@ -413,7 +414,6 @@
       navigator.mediaSession.setActionHandler("play", () => nowPlaying.play());
       navigator.mediaSession.setActionHandler("pause", () => nowPlaying.pause());
     }
-    nowPlaying.play();
     //nowPlaying.addEventListener("ended", playNextSong);
   }
 
