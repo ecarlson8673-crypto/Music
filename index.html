@@ -421,15 +421,15 @@
   function updateTimeline() {
     if ('setPositionState' in navigator.mediaSession) {
       navigator.mediaSession.setPositionState({
-        duration: audioElement.duration,      // Total track duration in seconds
-        playbackRate: audioElement.playbackRate,  // Speed (usually 1.0)
-        position: audioElement.currentTime     // Current track playback time
+        duration: nowPlaying.duration,
+        playbackRate: nowPlaying.playbackRate,
+        position: nowPlaying.currentTime
       });
     }
   }
 
-  audioElement.addEventListener('loadedmetadata', updateTimeline);
-  audioElement.addEventListener('seeked', updateTimeline);
+  nowPlaying.addEventListener('loadedmetadata', updateTimeline);
+  nowPlaying.addEventListener('seeked', updateTimeline);
 
 
   function random() {
