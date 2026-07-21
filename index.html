@@ -405,6 +405,7 @@
     nowNumber++;
     nowPlaying.src = music[order[nowNumber]] + ".mp3";
     document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
+    nowPlaying.currentTime = 0;
     nowPlaying.play().then(() => {
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
