@@ -409,16 +409,20 @@
     document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
     nowPlaying.currentTime = 0;
     nowPlaying.play().then(() => {
-    if ("mediaSession" in navigator) {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))).replaceAll("_", " "),
-        artist: music[order[nowNumber]].slice(Number(music[order[nowNumber]].search("-")) + 1).replaceAll("_", " ")
-      });
-      navigator.mediaSession.setActionHandler("play", () => nowPlaying.play());
-      navigator.mediaSession.setActionHandler("pause", () => nowPlaying.pause());
-    }
+      if ("mediaSession" in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))).replaceAll("_", " "),
+          artist: music[order[nowNumber]].slice(Number(music[order[nowNumber]].search("-")) + 1).replaceAll("_", " ")
+        });
+        navigator.mediaSession.setActionHandler("play", () => nowPlaying.play());
+        navigator.mediaSession.setActionHandler("pause", () => nowPlaying.pause());
+      }
     });
-    //nowPlaying.addEventListener("ended", playNextSong);
+    navigator.mediaSession.setPositionState({
+      duration: nowPlaying.duration,
+      playbackRate: nowPlaying.playbackRate,
+      position: nowPlaying.currentTime
+    });
   }
 
   function random() {
