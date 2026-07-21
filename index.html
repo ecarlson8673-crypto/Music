@@ -386,9 +386,9 @@
   
   function start() {
     if (playing == false) {
+      blankAudio.play();
       playNextSong();
       playing = true;
-      blankAudio.play();
     } else {
       nowPlaying.play();
     }
