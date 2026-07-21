@@ -416,12 +416,12 @@
         });
         navigator.mediaSession.setActionHandler("play", () => nowPlaying.play());
         navigator.mediaSession.setActionHandler("pause", () => nowPlaying.pause());
+        navigator.mediaSession.setPositionState({
+          duration: nowPlaying.duration,
+          playbackRate: nowPlaying.playbackRate,
+          position: nowPlaying.currentTime
+        });
       }
-    });
-    navigator.mediaSession.setPositionState({
-      duration: nowPlaying.duration,
-      playbackRate: nowPlaying.playbackRate,
-      position: nowPlaying.currentTime
     });
   }
 
