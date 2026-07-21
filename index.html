@@ -368,7 +368,7 @@
       }
     }
   }
-  var nowNumber = 0;
+  var nowNumber = -1;
   var nowPlaying = new Audio();
   nowPlaying.addEventListener("ended", playNextSong);
   var playing = false;
@@ -417,20 +417,6 @@
     });
     //nowPlaying.addEventListener("ended", playNextSong);
   }
-
-  function updateTimeline() {
-    if ('setPositionState' in navigator.mediaSession) {
-      navigator.mediaSession.setPositionState({
-        duration: nowPlaying.duration,
-        playbackRate: nowPlaying.playbackRate,
-        position: nowPlaying.currentTime
-      });
-    }
-  }
-
-  nowPlaying.addEventListener('loadedmetadata', updateTimeline);
-  nowPlaying.addEventListener('seeked', updateTimeline);
-
 
   function random() {
     //need to re randimize order
