@@ -390,12 +390,14 @@
       playNextSong();
       playing = true;
     } else {
+      blankAudio.play();
       nowPlaying.play();
     }
   }
 
   function pause() {
     nowPlaying.pause();
+    blankAudio.pause();
   }
 
   function next() {
@@ -414,8 +416,8 @@
           title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))).replaceAll("_", " "),
           artist: music[order[nowNumber]].slice(Number(music[order[nowNumber]].search("-")) + 1).replaceAll("_", " ")
         });
-        navigator.mediaSession.setActionHandler("play", () => nowPlaying.play());
-        navigator.mediaSession.setActionHandler("pause", () => nowPlaying.pause());
+        navigator.mediaSession.setActionHandler("play", start);
+        navigator.mediaSession.setActionHandler("pause", pause);
         navigator.mediaSession.setPositionState({
           duration: nowPlaying.duration,
           playbackRate: nowPlaying.playbackRate,
