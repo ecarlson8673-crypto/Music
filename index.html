@@ -372,6 +372,7 @@
   const nowPlaying = new Audio();
   nowPlaying.addEventListener("ended", playNextSong);
   const blankAudio = new Audio("blank.mp3");
+  blankAudio.addEventListener("ended", continueBlank);
   var playing = false;
   // random (true) or human picked (false)
   var which = true;
@@ -425,6 +426,11 @@
         });
       }
     });
+  }
+
+  function continueBlank() {
+    blankAudio.currentTime = 0;
+    blankAudio.play();
   }
 
   function random() {
