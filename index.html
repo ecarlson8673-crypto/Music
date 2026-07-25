@@ -440,6 +440,20 @@
   nowPlaying.addEventListener('loadedmetadata', updateTimeline);
   nowPlaying.addEventListener('seeked', updateTimeline);
 
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.setActionHandler('seekto', (details) => {
+      // 1. Update the actual JS HTML5 audio position
+      if (details.fastSeek && 'fastSeek' in audio) {
+        nowPlaying.fastSeek(details.seekTime);
+      } else {
+        nowPlaying.currentTime = details.seekTime;
+      }
+    
+      // 2. Sync the position state back to the OS UI
+      updateTimeLine();
+    });
+  }
+
   function continueBlank() {
     blankAudio.currentTime = 0;
     blankAudio.play();
