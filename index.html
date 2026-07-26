@@ -419,11 +419,7 @@
         });
         navigator.mediaSession.setActionHandler("play", start);
         navigator.mediaSession.setActionHandler("pause", pause);
-        navigator.mediaSession.setPositionState({
-          duration: nowPlaying.duration,
-          playbackRate: nowPlaying.playbackRate,
-          position: nowPlaying.currentTime
-        });
+        updateTimeline();
       }
     });
   }
@@ -450,7 +446,7 @@
       }
     
       // 2. Sync the position state back to the OS UI
-      updateTimeLine();
+      updateTimeline();
     });
   }
 
