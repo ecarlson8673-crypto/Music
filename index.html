@@ -357,6 +357,13 @@
     }
   }
 
+  music.sort();
+  music.sort((a, b) => {
+    const suba = a.slice(a.search("-") + 1).replaceAll("_", "");
+    const subb = b.slice(b.search("-") + 1).replaceAll("_", "");
+    return suba.localeCompare(subb);
+  });
+
   var order = [];
   for (let i = 1; i < music.length; i++) {
     let done = false;
@@ -492,15 +499,6 @@
       order = [];
     }
     order[order.length + 1] = i.currentTarget.id;
-  }
-
-  function musicVariable() {
-    //alphabetize music by artist
-    var musicWorking = [];
-    musicWorking[1] = music[1];
-    for (let i = 2; i < music.length; i++) {
-      
-    }
   }
 </script>
 </html>
