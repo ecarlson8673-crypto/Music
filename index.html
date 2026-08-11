@@ -43,6 +43,19 @@
     bottom: 50px;
     font-size: 20px;
   }
+  #upVolume {
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    font-size: 20px;
+  }
+  #downVolume {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    font-size: 20px;
+    width: 27px;
+  }
   #currentSong {
     position: fixed;
     bottom: 10px;
@@ -80,6 +93,8 @@
   <button id="pause" onclick="pause()">Pause</button>
   <button id="next" onclick="next()">></button>
   <button id="random" onclick="random()"><--></button>
+  <button id="downVolume" onclick="down()">-</button>
+  <button id="upVolume" onclick="up()">+</button>
   <div id="currentSong"></div>
   <div id="header"></div>
   <input id="search" type="question">
@@ -461,6 +476,20 @@
   function continueBlank() {
     blankAudio.currentTime = 0;
     blankAudio.play();
+  }
+
+  function down() {
+    if (volume > 0.0) {
+      volume = volume - 0.1;
+    }
+    nowPlaying.volume = volume;
+  }
+  
+  function up() {
+    if (volume < 1) {
+      volume = volume + 0.1;
+    }
+    nowPlaying.volume = volume;
   }
 
   function random() {
