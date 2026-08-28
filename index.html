@@ -37,21 +37,21 @@
     bottom: 50px;
     font-size: 20px;
   }
-  #random {
-    position: fixed;
-    left: 5px;
-    bottom: 50px;
-    font-size: 20px;
-  }
   #upVolume {
     position: fixed;
     right: 20px;
     bottom: 50px;
     font-size: 20px;
   }
+  #volume {
+    position: fixed;
+    bottom: 55px;
+    right: 49px;
+    font-size: 20px;
+  }
   #downVolume {
     position: fixed;
-    right: 50px;
+    right: 70px;
     bottom: 50px;
     font-size: 20px;
     width: 27px;
@@ -92,8 +92,8 @@
   <button id="start" onclick="start()">Play</button>
   <button id="pause" onclick="pause()">Pause</button>
   <button id="next" onclick="next()">></button>
-  <button id="random" onclick="random()"><--></button>
   <button id="downVolume" onclick="down()">-</button>
+  <div id="volume">10</div>
   <button id="upVolume" onclick="up()">+</button>
   <div id="currentSong"></div>
   <div id="header"></div>
@@ -366,12 +366,12 @@
   music[259] = "I_Will_Wait-Mumford_&_Sons";
   music[260] = "Little_Lion_Man-Mumford_&_Sons";
 
-  for (let i = 1; i < music.length; i++) {
-    if (music[i] == null) {
-      music = music.splice(i,1);
-    }
+  var order = [...music];
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
   }
-
+  
   music.sort();
   music.sort((a, b) => {
     const suba = a.slice(a.search("-") + 1).replaceAll("_", "");
@@ -379,17 +379,6 @@
     return suba.localeCompare(subb);
   });
 
-  var order = [];
-  for (let i = 1; i < music.length; i++) {
-    let done = false;
-    while (done == false) {
-      let number = Math.ceil(Math.random() * (music.length - 1)) - 1;
-      if (order[number] == null) {
-        order[number] = i;
-        done = true;
-      }
-    }
-  }
   var nowNumber = -1;
   const nowPlaying = new Audio();
   nowPlaying.addEventListener("ended", playNextSong);
@@ -432,14 +421,14 @@
   
   function playNextSong() {
     nowNumber++;
-    nowPlaying.src = music[order[nowNumber]] + ".mp3";
-    document.getElementById("currentSong").innerHTML = music[order[nowNumber]].replaceAll("_", " ");
+    nowPlaying.src = order[nowNumber] + ".mp3";
+    document.getElementById("currentSong").innerHTML = order[nowNumber].replaceAll("_", " ");
     nowPlaying.currentTime = 0;
     nowPlaying.play().then(() => {
       if ("mediaSession" in navigator) {
         navigator.mediaSession.metadata = new MediaMetadata({
-          title: music[order[nowNumber]].slice(0, Number(music[order[nowNumber]].search("-"))).replaceAll("_", " "),
-          artist: music[order[nowNumber]].slice(Number(music[order[nowNumber]].search("-")) + 1).replaceAll("_", " ")
+          title: order[nowNumber].slice(0, Number(order[nowNumber].search("-"))).replaceAll("_", " "),
+          artist: order[nowNumber].slice(Number(order[nowNumber].search("-")) + 1).replaceAll("_", " ")
         });
         navigator.mediaSession.setActionHandler("play", start);
         navigator.mediaSession.setActionHandler("pause", pause);
@@ -481,26 +470,23 @@
 
   function down() {
     if (volume > 0.0) {
-      volume = volume - 0.1;
+      volume = Math.round(volume - 0.1);
     }
     nowPlaying.volume = volume;
+    document.getElementById("volume").innerHTML = volume * 10;
   }
   
   function up() {
     if (volume < 1) {
-      volume = volume + 0.1;
+      volume = Math.round(volume + 0.1);
     }
     nowPlaying.volume = volume;
-  }
-
-  function random() {
-    //need to re randimize order
-    nowNumber = 0;
+    document.getElementById("volume").innerHTML = volume * 10;
   }
 
   function search() {
     const search = document.getElementById("search").value.toLowerCase();
-    for (let i = 1; i < music.length; i++) {
+    for (let i = 0; i < music.length; i++) {
       const words = music[i].replaceAll("_", " ").toLowerCase();
       if (words.includes(search) == false) {
         document.getElementById(i).style.display = "none";
@@ -528,7 +514,7 @@
       which = false;
       order = [];
     }
-    order[order.length + 1] = i.currentTarget.id;
+    order[order.length + 1] = music[i.currentTarget.id];
   }
 </script>
 </html>
