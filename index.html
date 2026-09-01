@@ -15,25 +15,25 @@
   }
   #previous {
     position: fixed;
-    left: calc(50% - 195px);
+    left: calc(35% - 29px);
     bottom: 50px;
     font-size: 20px;
   }
   #start {
     position: fixed;
-    left: calc(50% - 165px);
+    left: calc(35%);
     bottom: 50px;
     font-size: 20px;
   }
   #pause {
     position: fixed;
-    left: calc(50% - 110px);
+    left: calc(35% + 56px);
     bottom: 50px;
     font-size: 20px;
   }
   #next {
     position: fixed;
-    left: calc(50% - 35px);
+    left: calc(35% + 131px);
     bottom: 50px;
     font-size: 20px;
   }
@@ -84,6 +84,9 @@
   }
   body {
     background-color: rgb(220, 220, 220);
+  }
+  input {
+    background-color: rgb(240, 240, 240);
   }
 </style>
 <body>
@@ -434,6 +437,7 @@
         updateTimeline();
       }
     });
+    start();
   }
 
   function updateTimeline() {
@@ -468,8 +472,9 @@
   }
 
   function down() {
-    if (volume > 0.0) {
-      volume = Math.round(volume - 0.1);
+    if (volume > 0) {
+      volume = Math.round((volume - 0.1) * 10);
+      volume = volume / 10;
     }
     nowPlaying.volume = volume;
     document.getElementById("volume").innerHTML = volume * 10;
@@ -477,7 +482,8 @@
   
   function up() {
     if (volume < 1) {
-      volume = Math.round(volume + 0.1);
+      volume = Math.round((volume + 0.1) * 10);
+      volume = volume / 10;
     }
     nowPlaying.volume = volume;
     document.getElementById("volume").innerHTML = volume * 10;
@@ -564,7 +570,7 @@
     }
     total = total / Number(number.length);
     total = Math.round(total * 10);
-    return `rgb(${175}, ${total + 75}, ${total + 75})`;
+    return `rgb(${total + 75}, ${total + 75}, ${total + 75})`;
   }
 
   //music buttons
