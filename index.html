@@ -15,25 +15,25 @@
   }
   #previous {
     position: fixed;
-    left: calc(35% - 29px);
+    left: calc(35%);
     bottom: 50px;
     font-size: 20px;
   }
   #start {
     position: fixed;
-    left: calc(35%);
+    left: calc(35% + 29px);
     bottom: 50px;
     font-size: 20px;
   }
   #pause {
     position: fixed;
-    left: calc(35% + 56px);
+    left: calc(35% + 85px);
     bottom: 50px;
     font-size: 20px;
   }
   #next {
     position: fixed;
-    left: calc(35% + 131px);
+    left: calc(35% + 160px);
     bottom: 50px;
     font-size: 20px;
   }
@@ -96,7 +96,7 @@
   <button id="pause" onclick="pause()">Pause</button>
   <button id="next" onclick="next()">></button>
   <button id="downVolume" onclick="down()">-</button>
-  <div id="volume">10</div>
+  <div id="volume">20</div>
   <button id="upVolume" onclick="up()">+</button>
   <div id="currentSong"></div>
   <div id="header"></div>
@@ -419,6 +419,7 @@
   function next() {
     nowPlaying.pause();
     playNextSong();
+    updateTimeline();
   }
   
   function playNextSong() {
@@ -432,13 +433,20 @@
           title: order[nowNumber].slice(0, Number(order[nowNumber].search("-"))).replaceAll("_", " "),
           artist: order[nowNumber].slice(Number(order[nowNumber].search("-")) + 1).replaceAll("_", " ")
         });
-        navigator.mediaSession.setActionHandler("play", start);
+        navigator.mediaSession.setActionHandler("play", play);
         navigator.mediaSession.setActionHandler("pause", pause);
         updateTimeline();
       }
     });
     nowPlaying.play();
   }
+
+  function play() {
+    nowPlaying.play();
+    blankAudio.play();
+    updateTimeline();
+  }
+    
 
   function updateTimeline() {
     if ('setPositionState' in navigator.mediaSession) {
@@ -473,20 +481,20 @@
 
   function down() {
     if (volume > 0) {
-      volume = Math.round((volume - 0.1) * 10);
-      volume = volume / 10;
+      volume = Math.round((volume - 0.05) * 20);
+      volume = volume / 20;
     }
     nowPlaying.volume = volume;
-    document.getElementById("volume").innerHTML = volume * 10;
+    document.getElementById("volume").innerHTML = volume * 20;
   }
   
   function up() {
     if (volume < 1) {
-      volume = Math.round((volume + 0.1) * 10);
-      volume = volume / 10;
+      volume = Math.round((volume + 0.05) * 20);
+      volume = volume / 20;
     }
     nowPlaying.volume = volume;
-    document.getElementById("volume").innerHTML = volume * 10;
+    document.getElementById("volume").innerHTML = volume * 20;
   }
 
   document.addEventListener("keyup", search);
